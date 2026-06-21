@@ -1,0 +1,23 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- WARN — не показывать сгенерированные SQL-запросы и значения параметров в консоли,
+         чтобы не мешать выводу консольного меню. Если нужно посмотреть SQL для отладки,
+         поставь уровень DEBUG для org.hibernate.SQL и TRACE для org.hibernate.orm.jdbc.bind. -->
+    <logger name="org.hibernate.SQL" level="WARN"/>
+    <logger name="org.hibernate.orm.jdbc.bind" level="WARN"/>
+
+    <!-- WARN — не показывать служебные сообщения HikariCP (создание пула и т.д.) -->
+    <logger name="com.zaxxer.hikari" level="WARN"/>
+
+    <logger name="com.coffeeshop" level="INFO"/>
+
+    <root level="WARN">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
