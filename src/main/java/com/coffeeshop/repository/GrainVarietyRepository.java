@@ -16,7 +16,6 @@ public class GrainVarietyRepository extends GenericRepository<GrainVariety, Inte
 
     public GrainVarietyRepository() { super(GrainVariety.class); }
 
-    /** Все сорта зерна с их вкусовыми дескрипторами за 1 запрос (JOIN FETCH, решение N+1). */
     public List<GrainVariety> findAllWithTasteDescriptors() {
         try (EntityManager em = HibernateUtil.createEntityManager()) {
             return em.createQuery(

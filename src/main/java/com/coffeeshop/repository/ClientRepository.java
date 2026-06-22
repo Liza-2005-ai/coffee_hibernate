@@ -14,7 +14,6 @@ public class ClientRepository extends GenericRepository<Client, Integer> {
 
     public ClientRepository() { super(Client.class); }
 
-    /** Найти клиента по email (email уникален в схеме). */
     public Optional<Client> findByEmail(String email) {
         try (EntityManager em = HibernateUtil.createEntityManager()) {
             List<Client> result = em.createQuery(
@@ -25,7 +24,7 @@ public class ClientRepository extends GenericRepository<Client, Integer> {
         }
     }
 
-    /** Клиент со всеми его вкусовыми предпочтениями за 1 запрос (JOIN FETCH, решение N+1). */
+
     public Optional<Client> findByIdWithPreferences(int id) {
         try (EntityManager em = HibernateUtil.createEntityManager()) {
             List<Client> result = em.createQuery(
